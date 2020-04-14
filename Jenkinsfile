@@ -20,12 +20,13 @@ pipeline {
             }
         }
 
-        stage('Unit tests') {
+        stage('Unit tests and acceptance tests') {
             steps {
                 //sh  ''' source activate ${BUILD_TAG}
                 //        python -m pytest --verbose --junit-xml reports/unit_tests.xml
                 //    '''
                 bat "python -m pytest --verbose --junit-xml reports/unit_tests.xml tests/login_scenario.py"
+                bat "behave"
             }
             post {
                 always {
