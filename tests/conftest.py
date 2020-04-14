@@ -13,7 +13,8 @@ def pytest_addoption(parser):
 def driver(request):
    browser = request.config.getoption("--driver")
    if browser == 'chrome':
-       chromedriver = os.path.abspath("./chromedriver")
+       # To change the extension for linux
+       chromedriver = os.path.abspath("./chromedriver.exe")
        print(chromedriver)
        os.environ["webdriver.chrome.driver"] = chromedriver
        browser = webdriver.Chrome(chromedriver)
